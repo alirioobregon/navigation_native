@@ -1,5 +1,7 @@
 package com.example.test1.core.navigation
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,12 +33,18 @@ fun AppRoot(modifier: Modifier) {
     NavHost(
         navController = navController,
         startDestination = Routes.Login.value,
-        modifier = modifier
+        modifier = modifier,
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None }
     ) {
         composable(Routes.Login.value) {
             LoginScreen(
                 onNavigateHome = {
-                    navController.navigate(Routes.Home.value)
+                    navController.navigate(Routes.Home.value) {
+
+//                        popUpTo(Routes.Login.value) { inclusive = true }
+//                        launchSingleTop = true
+                    }
                 })
         }
         composable(Routes.Home.value) {

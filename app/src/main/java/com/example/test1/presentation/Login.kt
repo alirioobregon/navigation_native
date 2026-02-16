@@ -31,7 +31,7 @@ fun LoginScreen(
     val vm = viewModel<LoginViewModel>()
     val uiState = vm.uiState.collectAsState().value
 //    val vm2 by viewModel<LoginViewModel>()
-    
+
     Column(Modifier.fillMaxSize().padding(16.dp)) {
         Text("Login", style = MaterialTheme.typography.headlineSmall)
         Text("data: ${uiState.firstDieValue}", style = MaterialTheme.typography.headlineSmall)
@@ -62,6 +62,13 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Ingresar")
+        }
+
+        Button(
+            onClick = { onNavigateHome() },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Ir a Home (demo)")
         }
     }
 }
