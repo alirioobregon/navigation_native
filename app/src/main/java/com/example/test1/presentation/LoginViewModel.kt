@@ -2,6 +2,7 @@ package com.example.test1.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.test1.data.repositoryImpl.AuthRepositoryImpl
 import com.example.test1.domain.repository.AuthRepository
 import com.example.test1.domain.result.AuthResult
 import kotlinx.coroutines.channels.Channel
@@ -44,7 +45,7 @@ sealed interface LoginEffect {
 //    val secondDieValue: Int? = null,
 //    val numberOfRolls: Int = 0,
 //)
-class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
+class LoginViewModel(private val repository: AuthRepository = AuthRepositoryImpl()) : ViewModel() {
 
 //    private val _uiState = MutableStateFlow(DiceUiState())
 //    val uiState: StateFlow<DiceUiState> = _uiState.asStateFlow()
@@ -52,7 +53,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     private val _state = MutableStateFlow(LoginState())
     val state: StateFlow<LoginState> = _state.asStateFlow()
 
-    private val _effects = MutableSharedFlow<LoginEffect>()
+    private val _effects = MutableSharedFlow<LoginEffect>(replay = 0, extraBufferCapacity = 1)
     val effects: SharedFlow<LoginEffect> = _effects.asSharedFlow()
 
 
