@@ -45,7 +45,7 @@ sealed interface LoginEffect {
 //    val secondDieValue: Int? = null,
 //    val numberOfRolls: Int = 0,
 //)
-class LoginViewModel(private val repository: AuthRepository = AuthRepositoryImpl()) : ViewModel() {
+class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
 
 //    private val _uiState = MutableStateFlow(DiceUiState())
 //    val uiState: StateFlow<DiceUiState> = _uiState.asStateFlow()

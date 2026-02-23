@@ -56,4 +56,6 @@ dependencies {
 
     //Navigation compose
     implementation(libs.bundles.navigation)
+
+    implementation(libs.bundles.koin)
 }

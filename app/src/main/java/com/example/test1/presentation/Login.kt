@@ -28,13 +28,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LoginScreen(
     onNavigateHome: () -> Unit
 ) {
 
-    val vm = viewModel<LoginViewModel>()
+    val vm = koinViewModel<LoginViewModel>()
 //    val uiState = vm.uiState.collectAsState().value
 
     val uiState by vm.state.collectAsStateWithLifecycle()
